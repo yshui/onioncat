@@ -1,11 +1,11 @@
 
 AC_PREREQ(2.62)
-define([svnversion], esyscmd([sh -c "echo -n $(wc -l <GitLog)"]))dnl
-AC_INIT([onioncat],[[0.2.3.g]svnversion],[rahra@cypherpunk.at])
+define([gitversion], esyscmd([sh -c "echo -n $(git rev-parse --sq --short HEAD)"]))dnl
+AC_INIT([onioncat],[[0.2.3.g]gitversion],[rahra@cypherpunk.at])
 AM_INIT_AUTOMAKE([-Wall -Werror])
 AC_CONFIG_HEADERS([config.h])
 
-AC_DEFINE(SVN_REVISION, "svnversion", [SVN Revision])
+AC_DEFINE(SVN_REVISION, "gitversion", [SVN Revision])
 
 
 AC_ARG_ENABLE([debug], AS_HELP_STRING([--enable-debug],[enable debugging]), 
